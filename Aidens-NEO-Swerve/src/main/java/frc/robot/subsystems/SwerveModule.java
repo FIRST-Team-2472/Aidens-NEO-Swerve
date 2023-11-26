@@ -9,7 +9,9 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.ModuleConstants;
 
 public class SwerveModule {
@@ -31,7 +33,7 @@ public class SwerveModule {
         
         this.absoluteEncoderOffsetRad = absoluteEncoderOffsetRad;
         this.absoluteEncoderReversed = absoluteEncoderReversed;
-        AbsoluteEncoder = new AnalogInput(absoluteEncoderId);
+        AbsoluteEncoder = new AnalogInput(absoluteEncoderId); // may need to change to "absoluteEncoder = new CANCoder(absoluteEncoderId);" depending on encoder type
 
         driveMotor = new CANSparkMax(driveMotorId, MotorType.kBrushless);
         turningMotor = new CANSparkMax(turningMotorId, MotorType.kBrushless);
@@ -44,11 +46,13 @@ public class SwerveModule {
 
         driveEncoder.setPositionConversionFactor(ModuleConstants.kDriveEncoderRot2Meter);
         driveEncoder.setVelocityConversionFactor(ModuleConstants.kDriveEncoderRPM2MeterPerSec);
-        turningEncoder.setPositionConversionFactor(ModuleConstants.kTurningEncoderRot2Meter);
+        turningEncoder.setPositionConversionFactor(ModuleConstants.kTurningEncoderRot2Meter); 
         turningEncoder.setVelocityConversionFactor(ModuleConstants.kTurningEncoderRPM2MeterPerSec);        
 
         turningPidController = new PIDController(ModuleConstants.kPTurning, 0, 0);
         turningPidController.enableContinuousInput(-Math.PI, Math.PI);
+        
+        resetEncoders();
     }
     
 
@@ -68,11 +72,11 @@ public class SwerveModule {
         return turningEncoder.getVelocity();
     }
     
-    public double getAbsoluteEncoderRad(){
+    public double getAbsoluteEncoderRad(){ // may need to change 
         double angle = AbsoluteEncoder.getVoltage() / RobotController.getVoltage5V();
         angle += 2.0 * Math.PI;
         angle -= absoluteEncoderOffsetRad;
-        return angle * (absoluteEncoderReversed ? - 1.0 : 1.0 )
+        return angle * (absoluteEncoderReversed ? - 1.0 : 1.0 );
     }
 
     public void resetEncoders(){
