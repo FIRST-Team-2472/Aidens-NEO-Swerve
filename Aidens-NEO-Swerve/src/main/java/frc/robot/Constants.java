@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 
 /**
@@ -26,8 +27,8 @@ public final class Constants {
   public static final class ModuleConstants {
     //gear ratios wheel diameters and encoder numbers
     public static final double kWheelDiameterMeters = Units.inchesToMeters(4);
-    public static final double kDriveMotorGearRatio = 1/ 8.14;
-    public static final double kTurningMotorGearRatio = 1 / 12.8; // verify all of these then delete this comment
+    public static final double kDriveMotorGearRatio = 1/ 6.75; // look up the module gear ratio (confirmed)
+    public static final double kTurningMotorGearRatio = 1 / 12.8; // confirmed for all mk4 modules
     public static final double kDriveEncoderRot2Meter = kDriveMotorGearRatio * Math.PI * kWheelDiameterMeters;
     public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
     public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
@@ -107,5 +108,15 @@ public final class Constants {
         public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = Math.PI * 2;
   }
 
-
+  public static final class AutoConstants{
+    public static final double kMaxSpeedMetersPerSecond;
+    public static final double kMaxAccelerationMetersPerSecondSquared;
+    public static final double kPXController = 1.5;
+    public static final double kPYController = 1.5;
+    public static final double kPThetaController = 1.5;
+    public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
+        new TrapezoidProfile.Constraints(
+          kMaxSpeedMetersPerSecond, 
+        kMaxAccelerationMetersPerSecondSquared);
+  }
 }

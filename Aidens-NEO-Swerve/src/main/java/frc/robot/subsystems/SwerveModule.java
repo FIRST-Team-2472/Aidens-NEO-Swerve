@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.sensors.CANCoder;
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
@@ -7,7 +8,9 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -24,7 +27,7 @@ public class SwerveModule {
 
     private final PIDController turningPidController;
 
-    private final AnalogInput AbsoluteEncoder;
+    private CANCoder absoluteEncoder;
     private final boolean absoluteEncoderReversed;
     private final double absoluteEncoderOffsetRad;
 
@@ -33,7 +36,7 @@ public class SwerveModule {
         
         this.absoluteEncoderOffsetRad = absoluteEncoderOffsetRad;
         this.absoluteEncoderReversed = absoluteEncoderReversed;
-        AbsoluteEncoder = new AnalogInput(absoluteEncoderId); // may need to change to "absoluteEncoder = new CANCoder(absoluteEncoderId);" depending on encoder type
+        absoluteEncoder = new CANCoder(absoluteEncoderId);
 
         driveMotor = new CANSparkMax(driveMotorId, MotorType.kBrushless);
         turningMotor = new CANSparkMax(turningMotorId, MotorType.kBrushless);
@@ -46,8 +49,8 @@ public class SwerveModule {
 
         driveEncoder.setPositionConversionFactor(ModuleConstants.kDriveEncoderRot2Meter);
         driveEncoder.setVelocityConversionFactor(ModuleConstants.kDriveEncoderRPM2MeterPerSec);
-        turningEncoder.setPositionConversionFactor(ModuleConstants.kTurningEncoderRot2Meter); 
-        turningEncoder.setVelocityConversionFactor(ModuleConstants.kTurningEncoderRPM2MeterPerSec);        
+        turningEncoder.setPositionConversionFactor(ModuleConstants.kTurningEncoderRot2Rad); 
+        turningEncoder.setVelocityConversionFactor(ModuleConstants.kTurningEncoderRPM2RadPerSec);        
 
         turningPidController = new PIDController(ModuleConstants.kPTurning, 0, 0);
         turningPidController.enableContinuousInput(-Math.PI, Math.PI);
@@ -71,17 +74,25 @@ public class SwerveModule {
     public double getTurningVelocity(){
         return turningEncoder.getVelocity();
     }
-    
-    public double getAbsoluteEncoderRad(){ // may need to change 
-        double angle = AbsoluteEncoder.getVoltage() / RobotController.getVoltage5V();
-        angle += 2.0 * Math.PI;
-        angle -= absoluteEncoderOffsetRad;
-        return angle * (absoluteEncoderReversed ? - 1.0 : 1.0 );
+    public SwerveModulePosition getPosition() {
+        return new SwerveModulePosition(getDrivePosition(), new Rotation2d(getAbsolutePosition()));
     }
+    public double getAbsolutePosition() {
+        // converts from 0-360 to -PI to PI then applies abosluteEncoder offset and
+        // reverse
+        double angle = Units.degreesToRadians(absoluteEncoder.getAbsolutePosition());
+        angle -= absoluteEncoderOffsetRad;
+        angle *= absoluteEncoderReversed ? -1 : 1;
+
+        // atan2 funtion range in -PI to PI, so it automaticaly converts (needs the sin
+        // and cos to) any input angle to that range
+        return Math.atan2(Math.sin(angle), Math.cos(angle));
+    }
+    
 
     public void resetEncoders(){
         driveEncoder.setPosition(0);
-        turningEncoder.setPosition(getAbsoluteEncoderRad());
+        turningEncoder.setPosition(getAbsolutePosition());
     }
 
     public SwerveModuleState getState(){
@@ -96,7 +107,7 @@ public class SwerveModule {
         state = SwerveModuleState.optimize(state, getState().angle); // makes it so we can reverse the wheels instead of spinning 180
         driveMotor.set(state.speedMetersPerSecond / DriveConstants.kPhysicalMaxSpeedMetersPerSecond);
         turningMotor.set(turningPidController.calculate(getTurningPosition(), state.angle.getRadians()));
-        SmartDashboard.putString("Swerve[" + AbsoluteEncoder.getChannel() + "] state", state.toString());
+        SmartDashboard.putString("Swerve[" + absoluteEncoder.getAbsolutePosition() + "] state", state.toString());
     }
 
     public void stop(){
