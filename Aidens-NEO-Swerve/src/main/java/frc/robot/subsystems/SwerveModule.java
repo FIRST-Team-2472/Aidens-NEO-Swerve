@@ -77,6 +77,9 @@ public class SwerveModule {
     public SwerveModulePosition getPosition() {
         return new SwerveModulePosition(getDrivePosition(), new Rotation2d(getAbsolutePosition()));
     }
+    public double getAbsoluteEncoder(){ // this is used for shuffleboard
+        return absoluteEncoder.getAbsolutePosition();
+    }
     public double getAbsolutePosition() {
         // converts from 0-360 to -PI to PI then applies abosluteEncoder offset and
         // reverse

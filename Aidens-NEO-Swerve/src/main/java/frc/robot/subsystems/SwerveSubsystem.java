@@ -108,4 +108,18 @@ public class SwerveSubsystem extends SubsystemBase{
                 backRight.getPosition() };
         return temp;
     }
+
+    // send over shuffleboard values
+    public double getFLAbsEncoder(){
+        return frontLeft.getAbsoluteEncoder();
+    }
+    public double getFRAbsEncoder(){
+        return frontRight.getAbsoluteEncoder();
+    }
+    public double getBLAbsEncoder(){
+        return backLeft.getAbsoluteEncoder();
+    }
+    public double getBRAbsEncoder(){
+        return backRight.getAbsoluteEncoder();
+    }
 }
