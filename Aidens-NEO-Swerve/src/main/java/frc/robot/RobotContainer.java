@@ -17,6 +17,7 @@ import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
@@ -97,5 +98,14 @@ public class RobotContainer {
           swerveControllerCommand, //starts the movement
           new InstantCommand(() -> swerveSubsystem.stopModules()) // stops the motors when
       );
+  }
+  public void logSwerve(){
+ 
+    SmartDashboard.putNumber("Heading", swerveSubsystem.getHeading());
+    SmartDashboard.putString("Robot Location", swerveSubsystem.getPose().getTranslation().toString());
+    SmartDashboard.putNumber("frontLeft Encoder", swerveSubsystem.getFLAbsEncoder());
+    SmartDashboard.putNumber("frontRight Encoder", swerveSubsystem.getFRAbsEncoder());
+    SmartDashboard.putNumber("BackLeft Encoder", swerveSubsystem.getBLAbsEncoder());
+    SmartDashboard.putNumber("BackRight Encoder", swerveSubsystem.getBRAbsEncoder());
   }
 }
