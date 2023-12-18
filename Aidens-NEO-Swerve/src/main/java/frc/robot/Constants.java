@@ -34,15 +34,15 @@ public final class Constants {
                 new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
                 new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
 
-        public static final int kFrontLeftDriveMotorPort = 11;
-        public static final int kBackLeftDriveMotorPort = 13;
-        public static final int kFrontRightDriveMotorPort = 17;
-        public static final int kBackRightDriveMotorPort = 15;
+        public static final int kFrontLeftDriveMotorPort = 56;
+        public static final int kBackLeftDriveMotorPort = 51;
+        public static final int kFrontRightDriveMotorPort = 55;
+        public static final int kBackRightDriveMotorPort = 50;
 
-        public static final int kFrontLeftTurningMotorPort = 10;
-        public static final int kBackLeftTurningMotorPort = 12;
-        public static final int kFrontRightTurningMotorPort = 16;
-        public static final int kBackRightTurningMotorPort = 14;
+        public static final int kFrontLeftTurningMotorPort = 57;
+        public static final int kBackLeftTurningMotorPort = 53;
+        public static final int kFrontRightTurningMotorPort = 54;
+        public static final int kBackRightTurningMotorPort = 43;
 
         //Positive is clockwise
         public static final boolean kFrontLeftTurningEncoderReversed = true;
@@ -55,10 +55,10 @@ public final class Constants {
         public static final boolean kFrontRightDriveEncoderReversed = true;
         public static final boolean kBackRightDriveEncoderReversed = true;
 
-        public static final int kFrontLeftDriveAbsoluteEncoderPort = 21;
-        public static final int kBackLeftDriveAbsoluteEncoderPort = 22;
-        public static final int kFrontRightDriveAbsoluteEncoderPort = 24;
-        public static final int kBackRightDriveAbsoluteEncoderPort = 23;
+        public static final int kFrontLeftDriveAbsoluteEncoderPort = 59;
+        public static final int kBackLeftDriveAbsoluteEncoderPort = 60;
+        public static final int kFrontRightDriveAbsoluteEncoderPort = 61;
+        public static final int kBackRightDriveAbsoluteEncoderPort = 62;
 
         //Positive is clockwise
         public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;

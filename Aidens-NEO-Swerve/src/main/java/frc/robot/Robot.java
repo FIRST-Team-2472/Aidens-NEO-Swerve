@@ -5,7 +5,8 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.networktables.NetworkTableEntry;
@@ -32,20 +33,20 @@ public class Robot extends TimedRobot {
       FLdriveVelocity, FRdriveVelocity, BLdriveVelocity, BRdriveVelocity,
       FLturningVelocity, FRturningVelocity, BLturningVelocity, BRturningVelocity;
 
-  private TalonFX FLdriveMotor = new TalonFX(DriveConstants.kFrontLeftDriveMotorPort);
-  private TalonFX FLturningMotor = new TalonFX(DriveConstants.kFrontLeftTurningMotorPort);
+  private CANSparkMax FLdriveMotor = new CANSparkMax(DriveConstants.kFrontLeftDriveMotorPort, MotorType.kBrushless);
+  private CANSparkMax FLturningMotor = new CANSparkMax(DriveConstants.kFrontLeftTurningMotorPort, MotorType.kBrushless);
   private SwerveEncoder FLabosluteEncoder = new SwerveEncoder(DriveConstants.kFrontLeftDriveAbsoluteEncoderPort);
 
-  private TalonFX BLdriveMotor = new TalonFX(DriveConstants.kBackLeftDriveMotorPort);
-  private TalonFX BLturningMotor = new TalonFX(DriveConstants.kBackLeftTurningMotorPort);
+  private CANSparkMax BLdriveMotor = new CANSparkMax(DriveConstants.kBackLeftDriveMotorPort, MotorType.kBrushless);
+  private CANSparkMax BLturningMotor = new CANSparkMax(DriveConstants.kBackLeftTurningMotorPort, MotorType.kBrushless);
   private SwerveEncoder BLabosluteEncoder = new SwerveEncoder(DriveConstants.kBackLeftDriveAbsoluteEncoderPort);
 
-  private TalonFX BRdriveMotor = new TalonFX(DriveConstants.kBackRightDriveMotorPort);
-  private TalonFX BRturningMotor = new TalonFX(DriveConstants.kBackRightTurningMotorPort);
+  private CANSparkMax BRdriveMotor = new CANSparkMax(DriveConstants.kBackRightDriveMotorPort, MotorType.kBrushless);
+  private CANSparkMax BRturningMotor = new CANSparkMax(DriveConstants.kBackRightTurningMotorPort, MotorType.kBrushless);
   private SwerveEncoder BRabosluteEncoder = new SwerveEncoder(DriveConstants.kBackRightDriveAbsoluteEncoderPort);
 
-  private TalonFX FRdriveMotor = new TalonFX(DriveConstants.kFrontRightDriveMotorPort);
-  private TalonFX FRturningMotor = new TalonFX(DriveConstants.kFrontRightTurningMotorPort);
+  private CANSparkMax FRdriveMotor = new CANSparkMax(DriveConstants.kFrontRightDriveMotorPort, MotorType.kBrushless);
+  private CANSparkMax FRturningMotor = new CANSparkMax(DriveConstants.kFrontRightTurningMotorPort, MotorType.kBrushless);
   private SwerveEncoder FRabosluteEncoder = new SwerveEncoder(DriveConstants.kFrontRightDriveAbsoluteEncoderPort);
 
   @Override
@@ -85,33 +86,33 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
-    FLdriveS.setDouble(FLdriveMotor.getSelectedSensorPosition() * ModuleConstants.kDriveEncoderRot2Meter);
-    FLturningS.setDouble(FLturningMotor.getSelectedSensorPosition() * ModuleConstants.kTurningEncoderRot2Rad);
+    FLdriveS.setDouble(FLdriveMotor.getEncoder().getPosition() * ModuleConstants.kDriveEncoderRot2Meter);
+    FLturningS.setDouble(FLturningMotor.getEncoder().getPosition() * ModuleConstants.kTurningEncoderRot2Rad);
     FLAbsoluteS.setDouble(FLabosluteEncoder.getPosition());
 
-    BLdriveS.setDouble(BLdriveMotor.getSelectedSensorPosition() * ModuleConstants.kDriveEncoderRot2Meter);
-    BLturningS.setDouble(BLturningMotor.getSelectedSensorPosition() * ModuleConstants.kTurningEncoderRot2Rad);
+    BLdriveS.setDouble(BLdriveMotor.getEncoder().getPosition() * ModuleConstants.kDriveEncoderRot2Meter);
+    BLturningS.setDouble(BLturningMotor.getEncoder().getPosition() * ModuleConstants.kTurningEncoderRot2Rad);
     BLAbsoluteS.setDouble(BLabosluteEncoder.getPosition());
 
-    BRdriveS.setDouble(BRdriveMotor.getSelectedSensorPosition() * ModuleConstants.kDriveEncoderRot2Meter);
-    BRturningS.setDouble(BRturningMotor.getSelectedSensorPosition() * ModuleConstants.kTurningEncoderRot2Rad);
+    BRdriveS.setDouble(BRdriveMotor.getEncoder().getPosition() * ModuleConstants.kDriveEncoderRot2Meter);
+    BRturningS.setDouble(BRturningMotor.getEncoder().getPosition() * ModuleConstants.kTurningEncoderRot2Rad);
     BRAbsoluteS.setDouble(BRabosluteEncoder.getPosition());
 
-    FRdriveS.setDouble(FRdriveMotor.getSelectedSensorPosition() * ModuleConstants.kDriveEncoderRot2Meter);
-    FRturningS.setDouble(FRturningMotor.getSelectedSensorPosition() * ModuleConstants.kTurningEncoderRot2Rad);
+    FRdriveS.setDouble(FRdriveMotor.getEncoder().getPosition() * ModuleConstants.kDriveEncoderRot2Meter);
+    FRturningS.setDouble(FRturningMotor.getEncoder().getPosition() * ModuleConstants.kTurningEncoderRot2Rad);
     FRAbsoluteS.setDouble(FRabosluteEncoder.getPosition());
 
-    FLdriveVelocity.setDouble(FLdriveMotor.getSelectedSensorVelocity() * ModuleConstants.kDriveEncoderRPMS2MeterPerSec);
-    FLturningVelocity.setDouble(FLturningMotor.getSelectedSensorVelocity() * ModuleConstants.kTurningEncoderRPMS2RadPerSec);
+    FLdriveVelocity.setDouble(FLdriveMotor.getEncoder().getVelocity() * ModuleConstants.kDriveEncoderRPMS2MeterPerSec);
+    FLturningVelocity.setDouble(FLturningMotor.getEncoder().getVelocity() * ModuleConstants.kTurningEncoderRPMS2RadPerSec);
     
-    FRdriveVelocity.setDouble(FRdriveMotor.getSelectedSensorVelocity() * ModuleConstants.kDriveEncoderRPMS2MeterPerSec);
-    FRturningVelocity.setDouble(FRturningMotor.getSelectedSensorVelocity() * ModuleConstants.kTurningEncoderRPMS2RadPerSec);
+    FRdriveVelocity.setDouble(FRdriveMotor.getEncoder().getVelocity() * ModuleConstants.kDriveEncoderRPMS2MeterPerSec);
+    FRturningVelocity.setDouble(FRturningMotor.getEncoder().getVelocity() * ModuleConstants.kTurningEncoderRPMS2RadPerSec);
     
-    BLdriveVelocity.setDouble(BLdriveMotor.getSelectedSensorVelocity() * ModuleConstants.kDriveEncoderRPMS2MeterPerSec);
-    BLturningVelocity.setDouble(BLturningMotor.getSelectedSensorVelocity() * ModuleConstants.kTurningEncoderRPMS2RadPerSec);
+    BLdriveVelocity.setDouble(BLdriveMotor.getEncoder().getVelocity() * ModuleConstants.kDriveEncoderRPMS2MeterPerSec);
+    BLturningVelocity.setDouble(BLturningMotor.getEncoder().getVelocity() * ModuleConstants.kTurningEncoderRPMS2RadPerSec);
     
-    BRdriveVelocity.setDouble(BRdriveMotor.getSelectedSensorVelocity() * ModuleConstants.kDriveEncoderRPMS2MeterPerSec);
-    BRturningVelocity.setDouble(BRturningMotor.getSelectedSensorVelocity() * ModuleConstants.kTurningEncoderRPMS2RadPerSec);
+    BRdriveVelocity.setDouble(BRdriveMotor.getEncoder().getVelocity() * ModuleConstants.kDriveEncoderRPMS2MeterPerSec);
+    BRturningVelocity.setDouble(BRturningMotor.getEncoder().getVelocity() * ModuleConstants.kTurningEncoderRPMS2RadPerSec);
   }
 
   @Override
@@ -125,17 +126,17 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
 
-    FLdriveMotor.setSelectedSensorPosition(0);
-    FLturningMotor.setSelectedSensorPosition(0);
+    FLdriveMotor.getEncoder().setPosition(0);
+    FLturningMotor.getEncoder().setPosition(0);
 
-    BLdriveMotor.setSelectedSensorPosition(0);
-    BLturningMotor.setSelectedSensorPosition(0);
+    BLdriveMotor.getEncoder().setPosition(0);
+    BLturningMotor.getEncoder().setPosition(0);
 
-    BRdriveMotor.setSelectedSensorPosition(0);
-    BRturningMotor.setSelectedSensorPosition(0);
+    BRdriveMotor.getEncoder().setPosition(0);
+    BRturningMotor.getEncoder().setPosition(0);
 
-    FRdriveMotor.setSelectedSensorPosition(0);
-    FRturningMotor.setSelectedSensorPosition(0);
+    FRdriveMotor.getEncoder().setPosition(0);
+    FRturningMotor.getEncoder().setPosition(0);
   }
 
   @Override
@@ -153,17 +154,17 @@ public class Robot extends TimedRobot {
 
   @Override
   public void testInit() {
-    FLdriveMotor.setSelectedSensorPosition(0);
-    FLturningMotor.setSelectedSensorPosition(0);
+    FLdriveMotor.getEncoder().setPosition(0);
+    FLturningMotor.getEncoder().setPosition(0);
 
-    BLdriveMotor.setSelectedSensorPosition(0);
-    BLturningMotor.setSelectedSensorPosition(0);
+    BLdriveMotor.getEncoder().setPosition(0);
+    BLturningMotor.getEncoder().setPosition(0);
 
-    BRdriveMotor.setSelectedSensorPosition(0);
-    BRturningMotor.setSelectedSensorPosition(0);
+    BRdriveMotor.getEncoder().setPosition(0);
+    BRturningMotor.getEncoder().setPosition(0);
 
-    FRdriveMotor.setSelectedSensorPosition(0);
-    FRturningMotor.setSelectedSensorPosition(0);
+    FRdriveMotor.getEncoder().setPosition(0);
+    FRturningMotor.getEncoder().setPosition(0);
   }
 
   @Override
@@ -175,10 +176,10 @@ public class Robot extends TimedRobot {
     BLdriveMotor.set(ControlMode.PercentOutput, 1);
    */
     
-    FRturningMotor.set(ControlMode.PercentOutput, 1);
-    BRturningMotor.set(ControlMode.PercentOutput, 1);
-    FLturningMotor.set(ControlMode.PercentOutput, 1);
-    BLturningMotor.set(ControlMode.PercentOutput, 1);
+    FRturningMotor.set(1);
+    BRturningMotor.set(1);
+    FLturningMotor.set(1);
+    BLturningMotor.set(1);
   }
 
   @Override
