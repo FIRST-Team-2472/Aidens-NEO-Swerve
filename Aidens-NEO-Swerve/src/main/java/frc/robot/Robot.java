@@ -187,10 +187,10 @@ public class Robot extends TimedRobot {
     BLdriveMotor.set(ControlMode.PercentOutput, 1);
    */
     
-    FRturningMotor.set(1);
-    BRturningMotor.set(1);
-    FLturningMotor.set(1);
-    BLturningMotor.set(1);
+    FRturningMotor.set(0.1);
+    BRturningMotor.set(0.1);
+    FLturningMotor.set(0.1);
+    BLturningMotor.set(0.1);
   }
 
   @Override
