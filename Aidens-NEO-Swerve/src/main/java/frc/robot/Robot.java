@@ -6,6 +6,7 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.networktables.GenericEntry;
@@ -51,6 +52,16 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+    FLdriveMotor.setIdleMode(IdleMode.kBrake);
+    FRdriveMotor.setIdleMode(IdleMode.kBrake);
+    BLdriveMotor.setIdleMode(IdleMode.kBrake);
+    BRdriveMotor.setIdleMode(IdleMode.kBrake);
+
+    FLturningMotor.setIdleMode(IdleMode.kBrake);
+    FRturningMotor.setIdleMode(IdleMode.kBrake);
+    BLturningMotor.setIdleMode(IdleMode.kBrake);
+    BRturningMotor.setIdleMode(IdleMode.kBrake);
+
 
     ShuffleboardTab programmerBoard = Shuffleboard.getTab("Programmer Board");
     ShuffleboardTab velocityBoard = Shuffleboard.getTab("Velocity Board");

@@ -45,15 +45,15 @@ public final class Constants {
         public static final int kBackRightTurningMotorPort = 43;
 
         //Positive is clockwise
-        public static final boolean kFrontLeftTurningEncoderReversed = true;
-        public static final boolean kBackLeftTurningEncoderReversed = true;
-        public static final boolean kFrontRightTurningEncoderReversed = true;
-        public static final boolean kBackRightTurningEncoderReversed = true;
+        public static final boolean kFrontLeftTurningEncoderReversed = false;
+        public static final boolean kBackLeftTurningEncoderReversed = false;
+        public static final boolean kFrontRightTurningEncoderReversed = false;
+        public static final boolean kBackRightTurningEncoderReversed = false;
 
-        public static final boolean kFrontLeftDriveEncoderReversed = true;
-        public static final boolean kBackLeftDriveEncoderReversed = true;
-        public static final boolean kFrontRightDriveEncoderReversed = true;
-        public static final boolean kBackRightDriveEncoderReversed = true;
+        public static final boolean kFrontLeftDriveEncoderReversed = false;
+        public static final boolean kBackLeftDriveEncoderReversed = false;
+        public static final boolean kFrontRightDriveEncoderReversed = false;
+        public static final boolean kBackRightDriveEncoderReversed = false;
 
         public static final int kFrontLeftDriveAbsoluteEncoderPort = 59;
         public static final int kBackLeftDriveAbsoluteEncoderPort = 60;
@@ -62,15 +62,15 @@ public final class Constants {
 
         //Positive is clockwise
         public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
-        public static final boolean kBackLeftDriveAbsoluteEncoderReversed = true;
+        public static final boolean kBackLeftDriveAbsoluteEncoderReversed = false;
         public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false;
         public static final boolean kBackRightDriveAbsoluteEncoderReversed = false;
 
         //To find set the motors forward record the value
-        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 0.56143696836;
-        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = -2.84706834231;
-        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = -1.4327380558;
-        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 1.091;
+        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 0;
+        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 0;
+        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 0;
+        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 0;
 
         //To find set the modules to 100% and see what speed cap out at
         public static final double kPhysicalMaxSpeedMetersPerSecond = 4.186;
