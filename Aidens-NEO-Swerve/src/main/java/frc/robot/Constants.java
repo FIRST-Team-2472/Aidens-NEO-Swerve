@@ -67,7 +67,7 @@ public final class Constants {
     public static final boolean kFrontLeftDriveEncoderReversed = true;
     public static final boolean kFrontLeftTurningEncoderReversed = true;
     public static final int kFrontLeftDriveAbsoluteEncoderPort = 59;
-    public static final double kFrontLeftDriveAbsoluteEncoderOffsetAng = 306.5;
+    public static final double kFrontLeftDriveAbsoluteEncoderOffsetAng = 178.5;
     public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = true;
 
     //Front Right
@@ -76,7 +76,7 @@ public final class Constants {
     public static final boolean kFrontRightDriveEncoderReversed = true;
     public static final boolean kFrontRightTurningEncoderReversed = true;
     public static final int kFrontRightDriveAbsoluteEncoderPort = 61;
-    public static final double kFrontRightDriveAbsoluteEncoderOffsetAng = 184.5;
+    public static final double kFrontRightDriveAbsoluteEncoderOffsetAng = 352.8;
     public static final boolean kFrontRightDriveAbsoluteEncoderReversed = true;
  
     //Back Left
@@ -85,7 +85,7 @@ public final class Constants {
     public static final boolean kBackLeftDriveEncoderReversed = true;
     public static final boolean kBackLeftTurningEncoderReversed = true;
     public static final int kBackLeftDriveAbsoluteEncoderPort = 60;
-    public static final double kBackLeftDriveAbsoluteEncoderOffsetAng = 13;
+    public static final double kBackLeftDriveAbsoluteEncoderOffsetAng = 172.3;
     public static final boolean kBackLeftDriveAbsoluteEncoderReversed = true;
 
     //Back Right
@@ -94,7 +94,7 @@ public final class Constants {
     public static final boolean kBackRightDriveEncoderReversed = true;
     public static final boolean kBackRightTurningEncoderReversed = true;
     public static final int kBackRightDriveAbsoluteEncoderPort = 62;
-    public static final double kBackRightDriveAbsoluteEncoderOffsetAng = 354;
+    public static final double kBackRightDriveAbsoluteEncoderOffsetAng = 256.4;
     public static final boolean kBackRightDriveAbsoluteEncoderReversed = true;
 
     // run at full speed to test these then delete this comment
