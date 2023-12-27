@@ -45,7 +45,7 @@ public class SwerveModule {
         absoluteEncoder = new CANCoder(absoluteEncoderId);
         CANCoderConfiguration config = new CANCoderConfiguration();
         config.absoluteSensorRange = AbsoluteSensorRange.Unsigned_0_to_360;
-        config.magnetOffsetDegrees = -absoluteEncoderoffset; //Offset Here don't forget
+        config.magnetOffsetDegrees = absoluteEncoderoffset; //Offset Here don't forget
         config.initializationStrategy = SensorInitializationStrategy.BootToAbsolutePosition;
         absoluteEncoder.configAllSettings(config);
 
