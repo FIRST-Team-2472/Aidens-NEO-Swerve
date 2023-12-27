@@ -16,6 +16,7 @@ import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -40,22 +41,21 @@ public class RobotContainer {
   
   private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
   private final ShuffleboardInfo shuffleboardinfo = new ShuffleboardInfo(swerveSubsystem);
-  private final Joystick leftJoystick = new Joystick(ControllerConstants.kLeftJoystickControllerPort);
-  private final Joystick rightJoystick = new Joystick(ControllerConstants.kRightJoystickControllerPort);
+  public static XboxController Xboxcontroller = new XboxController(ControllerConstants.kXboxControllerPort);
   public RobotContainer() {
     swerveSubsystem.setDefaultCommand(new SwerveJoystickCmd(
       swerveSubsystem,
-      () -> leftJoystick.getX(),
-      () -> leftJoystick.getY(),
-      () -> rightJoystick.getY(),
-      () -> rightJoystick.getRawButton(3)));
+      () -> Xboxcontroller.getLeftX(),
+      () -> Xboxcontroller.getLeftY(),
+      () -> Xboxcontroller.getRightX(),
+      () -> Xboxcontroller.getRightBumper()));
 
       
     configureBindings();
   }
 
   private void configureBindings() {
-    new JoystickButton(rightJoystick, 2).whenPressed(() -> swerveSubsystem.zeroHeading());
+    new JoystickButton(Xboxcontroller, 2).whenPressed(() -> swerveSubsystem.zeroHeading());
   }
 
   public Command getAutonomousCommand() {

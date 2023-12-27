@@ -22,7 +22,8 @@ public final class Constants {
   public static final class ControllerConstants{
     // has our joystick and controller usb ports
     public static final int kLeftJoystickControllerPort = 0;
-    public static final int kRightJoystickControllerPort = 0;
+    public static final int kRightJoystickControllerPort = 1;
+    public static final int kXboxControllerPort = 3;
   }
   public static final class ModuleConstants {
     //gear ratios wheel diameters and encoder numbers
@@ -67,7 +68,7 @@ public final class Constants {
     public static final boolean kFrontLeftDriveEncoderReversed = true;
     public static final boolean kFrontLeftTurningEncoderReversed = true;
     public static final int kFrontLeftDriveAbsoluteEncoderPort = 59;
-    public static final double kFrontLeftDriveAbsoluteEncoderOffsetAng = 178.5;
+    public static final double kFrontLeftDriveAbsoluteEncoderOffsetAng = 78;
     public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = true;
 
     //Front Right
@@ -76,25 +77,25 @@ public final class Constants {
     public static final boolean kFrontRightDriveEncoderReversed = true;
     public static final boolean kFrontRightTurningEncoderReversed = true;
     public static final int kFrontRightDriveAbsoluteEncoderPort = 61;
-    public static final double kFrontRightDriveAbsoluteEncoderOffsetAng = 352.8;
+    public static final double kFrontRightDriveAbsoluteEncoderOffsetAng = 195;
     public static final boolean kFrontRightDriveAbsoluteEncoderReversed = true;
  
     //Back Left
-    public static final int kBackLeftDriveMotorPort = 51;
-    public static final int kBackLeftTurningMotorPort = 53;
+    public static final int kBackLeftDriveMotorPort = 53;
+    public static final int kBackLeftTurningMotorPort = 51;
     public static final boolean kBackLeftDriveEncoderReversed = true;
     public static final boolean kBackLeftTurningEncoderReversed = true;
-    public static final int kBackLeftDriveAbsoluteEncoderPort = 60;
-    public static final double kBackLeftDriveAbsoluteEncoderOffsetAng = 172.3;
+    public static final int kBackLeftDriveAbsoluteEncoderPort = 62;
+    public static final double kBackLeftDriveAbsoluteEncoderOffsetAng = 356.4;
     public static final boolean kBackLeftDriveAbsoluteEncoderReversed = true;
 
     //Back Right
-    public static final int kBackRightDriveMotorPort = 50;
-    public static final int kBackRightTurningMotorPort = 43;
+    public static final int kBackRightDriveMotorPort = 43;
+    public static final int kBackRightTurningMotorPort = 50;
     public static final boolean kBackRightDriveEncoderReversed = true;
     public static final boolean kBackRightTurningEncoderReversed = true;
-    public static final int kBackRightDriveAbsoluteEncoderPort = 62;
-    public static final double kBackRightDriveAbsoluteEncoderOffsetAng = 256.4;
+    public static final int kBackRightDriveAbsoluteEncoderPort = 60;
+    public static final double kBackRightDriveAbsoluteEncoderOffsetAng = 27.4;
     public static final boolean kBackRightDriveAbsoluteEncoderReversed = true;
 
     // run at full speed to test these then delete this comment

@@ -111,15 +111,15 @@ public class SwerveSubsystem extends SubsystemBase{
 
     // send over shuffleboard values
     public double getFLAbsEncoder(){
-        return frontLeft.getAbsoluteEncoder();
+        return frontLeft.getUnfilteredPosition();
     }
     public double getFRAbsEncoder(){
-        return frontRight.getAbsoluteEncoder();
+        return frontRight.getUnfilteredPosition();
     }
     public double getBLAbsEncoder(){
-        return backLeft.getAbsoluteEncoder();
+        return backLeft.getUnfilteredPosition();
     }
     public double getBRAbsEncoder(){
-        return backRight.getAbsoluteEncoder();
+        return backRight.getUnfilteredPosition();
     }
 }
