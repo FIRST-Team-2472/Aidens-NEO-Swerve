@@ -56,9 +56,9 @@ public final class Constants {
         public static final boolean kBackRightDriveEncoderReversed = false;
 
         public static final int kFrontLeftDriveAbsoluteEncoderPort = 59;
-        public static final int kBackLeftDriveAbsoluteEncoderPort = 60;
+        public static final int kBackLeftDriveAbsoluteEncoderPort = 62;
         public static final int kFrontRightDriveAbsoluteEncoderPort = 61;
-        public static final int kBackRightDriveAbsoluteEncoderPort = 62;
+        public static final int kBackRightDriveAbsoluteEncoderPort = 60;
 
         //Positive is clockwise
         public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
