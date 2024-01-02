@@ -68,7 +68,7 @@ public final class Constants {
     public static final boolean kFrontLeftDriveEncoderReversed = true;
     public static final boolean kFrontLeftTurningEncoderReversed = true;
     public static final int kFrontLeftDriveAbsoluteEncoderPort = 59;
-    public static final double kFrontLeftDriveAbsoluteEncoderOffsetAng = 45.628;
+    public static final double kFrontLeftDriveAbsoluteEncoderOffsetAng = 126;
     public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = true;
 
     //Front Right
@@ -77,7 +77,7 @@ public final class Constants {
     public static final boolean kFrontRightDriveEncoderReversed = true;
     public static final boolean kFrontRightTurningEncoderReversed = true;
     public static final int kFrontRightDriveAbsoluteEncoderPort = 61;
-    public static final double kFrontRightDriveAbsoluteEncoderOffsetAng = 258.75;
+    public static final double kFrontRightDriveAbsoluteEncoderOffsetAng = 353;
     public static final boolean kFrontRightDriveAbsoluteEncoderReversed = true;
  
     //Back Left
@@ -86,7 +86,7 @@ public final class Constants {
     public static final boolean kBackLeftDriveEncoderReversed = true;
     public static final boolean kBackLeftTurningEncoderReversed = true;
     public static final int kBackLeftDriveAbsoluteEncoderPort = 62;
-    public static final double kBackLeftDriveAbsoluteEncoderOffsetAng = 79.716796875;
+    public static final double kBackLeftDriveAbsoluteEncoderOffsetAng = 345;
     public static final boolean kBackLeftDriveAbsoluteEncoderReversed = true;
 
     //Back Right
@@ -95,7 +95,7 @@ public final class Constants {
     public static final boolean kBackRightDriveEncoderReversed = true;
     public static final boolean kBackRightTurningEncoderReversed = true;
     public static final int kBackRightDriveAbsoluteEncoderPort = 60;
-    public static final double kBackRightDriveAbsoluteEncoderOffsetAng = 1.2109375;
+    public static final double kBackRightDriveAbsoluteEncoderOffsetAng = 283.5;
     public static final boolean kBackRightDriveAbsoluteEncoderReversed = true;
 
     // run at full speed to test these then delete this comment
