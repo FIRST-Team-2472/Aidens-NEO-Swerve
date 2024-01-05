@@ -39,7 +39,7 @@ public final class Constants {
 
   public static final class SensorConstants{
     // extra sensors
-    public static final int kPigeonID = 0;
+    public static final int kPigeonID = 13;
   }
 
   public static final class OIConstants{
