@@ -68,7 +68,7 @@ public final class Constants {
     public static final boolean kFrontLeftDriveEncoderReversed = true;
     public static final boolean kFrontLeftTurningEncoderReversed = true;
     public static final int kFrontLeftDriveAbsoluteEncoderPort = 59;
-    public static final double kFrontLeftDriveAbsoluteEncoderOffsetAng = -136.7;
+    public static final double kFrontLeftDriveAbsoluteEncoderOffsetAng = 126;
     public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
 
     //Front Right
