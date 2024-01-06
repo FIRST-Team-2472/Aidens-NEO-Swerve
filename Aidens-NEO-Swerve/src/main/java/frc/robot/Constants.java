@@ -44,7 +44,7 @@ public final class Constants {
 
   public static final class OIConstants{
     //make this bigger  if it moves on its own lol
-    public static final double kDeadband = 0.1;
+    public static final double kDeadband = 0.2;
 
   }
   public static final class DriveConstants{
@@ -65,7 +65,7 @@ public final class Constants {
     //Front Left
     public static final int kFrontLeftDriveMotorPort = 56;
     public static final int kFrontLeftTurningMotorPort = 57; // fill these out then delete this comment
-    public static final boolean kFrontLeftDriveEncoderReversed = true;
+    public static final boolean kFrontLeftDriveEncoderReversed = false;
     public static final boolean kFrontLeftTurningEncoderReversed = true;
     public static final int kFrontLeftDriveAbsoluteEncoderPort = 59;
     public static final double kFrontLeftDriveAbsoluteEncoderOffsetAng = 126;
@@ -74,7 +74,7 @@ public final class Constants {
     //Front Right
     public static final int kFrontRightDriveMotorPort = 55;
     public static final int kFrontRightTurningMotorPort = 54;
-    public static final boolean kFrontRightDriveEncoderReversed = true;
+    public static final boolean kFrontRightDriveEncoderReversed = false;
     public static final boolean kFrontRightTurningEncoderReversed = true;
     public static final int kFrontRightDriveAbsoluteEncoderPort = 61;
     public static final double kFrontRightDriveAbsoluteEncoderOffsetAng = 353;
