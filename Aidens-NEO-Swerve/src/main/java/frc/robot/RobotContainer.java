@@ -17,17 +17,22 @@ import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DriveConstants;
-import frc.robot.commands.SwerveJoystickCmd;
+import frc.robot.CommandSequences;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.commands.*;
 import frc.robot.subsystems.ShuffleboardInfo;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
@@ -38,11 +43,26 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
+  private final String placementone = "Robot 1", placementtwo = "Robot 2", placementthree = "Robot 3";
   
+  private String m_autoSelected;
+  private final SendableChooser<String> m_chooser = new SendableChooser<>();
   private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
   private final ShuffleboardInfo shuffleboardinfo = new ShuffleboardInfo(swerveSubsystem);
   public static XboxController Xboxcontroller = new XboxController(ControllerConstants.kXboxControllerPort);
+
+  
   public RobotContainer() {
+    configureBindings();
+
+    m_chooser.addOption(placementone, placementone);
+    m_chooser.addOption(placementtwo, placementtwo);
+    m_chooser.addOption(placementthree, placementthree);
+
+    
+    ShuffleboardTab driverBoard = Shuffleboard.getTab("Driver Board");
+    driverBoard.add("Auto choices", m_chooser).withWidget(BuiltInWidgets.kComboBoxChooser);
+
     swerveSubsystem.setDefaultCommand(new SwerveJoystickCmd(
       swerveSubsystem,
       () -> Xboxcontroller.getLeftX(),
@@ -50,8 +70,6 @@ public class RobotContainer {
       () -> Xboxcontroller.getRightX(),
       () -> Xboxcontroller.getRightBumper()));
 
-      
-    configureBindings();
   }
 
   private void configureBindings() {
@@ -59,45 +77,20 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    // create auto path settings
-    // later move this part into a file of all our possible autos and make this the choosing section
-    TrajectoryConfig trajectoryConfig = new TrajectoryConfig(AutoConstants.kMaxSpeedMetersPerSecond, 
-        AutoConstants.kMaxAccelerationMetersPerSecondSquared)
-        .setKinematics(DriveConstants.kDriveKinematics);
-    
-    Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
-      new Pose2d(0,0, new Rotation2d(0)),
-      List.of( 
-        new Translation2d(1,0), 
-        new Translation2d(1, -1)
-      ),
-      new Pose2d(2,-1, Rotation2d.fromDegrees(180)),
-      trajectoryConfig
-    );
+      swerveSubsystem.zeroHeading();
 
-    PIDController xController = new PIDController(AutoConstants.kPXController, 0, 0);
-    PIDController yController = new PIDController(AutoConstants.kPYController, 0, 0);
-    ProfiledPIDController thetaController = new ProfiledPIDController(
-      AutoConstants.kPThetaController, 0, 0, AutoConstants.kThetaControllerConstraints
-      );
-      thetaController.enableContinuousInput(-Math.PI, Math.PI);
-       
+      m_autoSelected = m_chooser.getSelected();
+
+      if (m_autoSelected == placementone)
+      return new ParallelCommandGroup(null);
       
-      SwerveControllerCommand swerveControllerCommand = new SwerveControllerCommand(
-        trajectory,
-        swerveSubsystem::getPose,
-        DriveConstants.kDriveKinematics,
-        xController,
-        yController,
-        thetaController,
-        swerveSubsystem::setModuleStates,
-        swerveSubsystem 
-      );
-      return new SequentialCommandGroup(
-          new InstantCommand(() -> swerveSubsystem.resetOdometry(trajectory.getInitialPose())),
-          swerveControllerCommand, //starts the movement
-          new InstantCommand(() -> swerveSubsystem.stopModules()) // stops the motors when
-      );
+      if (m_autoSelected == placementtwo)
+      return new ParallelCommandGroup(null);
+
+      if (m_autoSelected == placementthree)
+      return new ParallelCommandGroup(null);
+
+      return null;
   }
   public void logSwerve(){
  
