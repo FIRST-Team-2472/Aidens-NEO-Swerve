@@ -13,7 +13,7 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.SensorConstants;
 
 public class SwerveSubsystem extends SubsystemBase{
-    private final SwerveModule frontLeft = new SwerveModule(
+    private final SwerveModule frontLeft = new SwerveModule(//
         DriveConstants.kFrontLeftDriveMotorPort,
         DriveConstants.kFrontLeftTurningMotorPort,
         DriveConstants.kFrontLeftDriveEncoderReversed,
@@ -22,7 +22,7 @@ public class SwerveSubsystem extends SubsystemBase{
         DriveConstants.kFrontLeftDriveAbsoluteEncoderOffsetAng,
         DriveConstants.kFrontLeftDriveAbsoluteEncoderReversed );
 
-    private final SwerveModule frontRight = new SwerveModule(
+    private final SwerveModule frontRight = new SwerveModule(//
         DriveConstants.kFrontRightDriveMotorPort,
         DriveConstants.kFrontRightTurningMotorPort,
         DriveConstants.kFrontRightDriveEncoderReversed,
@@ -31,7 +31,7 @@ public class SwerveSubsystem extends SubsystemBase{
         DriveConstants.kFrontRightDriveAbsoluteEncoderOffsetAng,
         DriveConstants.kFrontRightDriveAbsoluteEncoderReversed );
 
-    private final SwerveModule backLeft = new SwerveModule(
+    private final SwerveModule backLeft = new SwerveModule(//
         DriveConstants.kBackLeftDriveMotorPort,
         DriveConstants.kBackLeftTurningMotorPort,
         DriveConstants.kBackLeftDriveEncoderReversed,
@@ -40,7 +40,7 @@ public class SwerveSubsystem extends SubsystemBase{
         DriveConstants.kBackLeftDriveAbsoluteEncoderOffsetAng,
         DriveConstants.kBackLeftDriveAbsoluteEncoderReversed );
 
-    private final SwerveModule backRight = new SwerveModule(
+    private final SwerveModule backRight = new SwerveModule(//
         DriveConstants.kBackRightDriveMotorPort,
         DriveConstants.kBackRightTurningMotorPort,
         DriveConstants.kBackRightDriveEncoderReversed,
