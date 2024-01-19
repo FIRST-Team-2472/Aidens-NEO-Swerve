@@ -82,7 +82,7 @@ public class RobotContainer {
       m_autoSelected = m_chooser.getSelected();
 
       if (m_autoSelected == placementone)
-      return new ParallelCommandGroup(null);
+      return new ParallelCommandGroup(CommandSequences.robot1Command(swerveSubsystem));
       
       if (m_autoSelected == placementtwo)
       return new ParallelCommandGroup(null);

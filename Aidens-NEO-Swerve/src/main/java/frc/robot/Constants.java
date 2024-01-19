@@ -63,8 +63,8 @@ public final class Constants {
     //motor and encoder ports IMPORTANT
 
     //Front Left
-    public static final int kFrontLeftDriveMotorPort = 56;
-    public static final int kFrontLeftTurningMotorPort = 57; // fill these out then delete this comment
+    public static final int kFrontLeftDriveMotorPort = 55;
+    public static final int kFrontLeftTurningMotorPort = 54; // fill these out then delete this comment
     public static final boolean kFrontLeftDriveEncoderReversed = true;
     public static final boolean kFrontLeftTurningEncoderReversed = true;
     public static final int kFrontLeftDriveAbsoluteEncoderPort = 59;
@@ -72,8 +72,8 @@ public final class Constants {
     public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
 
     //Front Right
-    public static final int kFrontRightDriveMotorPort = 55;
-    public static final int kFrontRightTurningMotorPort = 54;
+    public static final int kFrontRightDriveMotorPort = 53;
+    public static final int kFrontRightTurningMotorPort = 51;
     public static final boolean kFrontRightDriveEncoderReversed = false;
     public static final boolean kFrontRightTurningEncoderReversed = true;
     public static final int kFrontRightDriveAbsoluteEncoderPort = 61;
@@ -81,8 +81,8 @@ public final class Constants {
     public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false;
  
     //Back Left
-    public static final int kBackLeftDriveMotorPort = 53;
-    public static final int kBackLeftTurningMotorPort = 51;
+    public static final int kBackLeftDriveMotorPort = 43;
+    public static final int kBackLeftTurningMotorPort = 50;
     public static final boolean kBackLeftDriveEncoderReversed = false;
     public static final boolean kBackLeftTurningEncoderReversed = true;
     public static final int kBackLeftDriveAbsoluteEncoderPort = 62;
@@ -90,8 +90,8 @@ public final class Constants {
     public static final boolean kBackLeftDriveAbsoluteEncoderReversed = false;
 
     //Back Right
-    public static final int kBackRightDriveMotorPort = 43;
-    public static final int kBackRightTurningMotorPort = 50;
+    public static final int kBackRightDriveMotorPort = 56;
+    public static final int kBackRightTurningMotorPort = 57;
     public static final boolean kBackRightDriveEncoderReversed = false;
     public static final boolean kBackRightTurningEncoderReversed = true;
     public static final int kBackRightDriveAbsoluteEncoderPort = 60;
@@ -110,8 +110,8 @@ public final class Constants {
   }
 
   public static final class AutoConstants{
-    public static final double kMaxSpeedMetersPerSecond = 1;
-    public static final double kMaxAccelerationMetersPerSecondSquared = 0.1;
+    public static final double kMaxSpeedMetersPerSecond = 6.8;
+    public static final double kMaxAccelerationMetersPerSecondSquared = 1.0;
     public static final double kPXController = 1.5;
     public static final double kPYController = 1.5;
     public static final double kPThetaController = 1.5;
