@@ -45,9 +45,9 @@ public class RobotContainer {
   public RobotContainer() {
     swerveSubsystem.setDefaultCommand(new SwerveJoystickCmd(
       swerveSubsystem,
-      () -> Xboxcontroller.getLeftX(),
       () -> Xboxcontroller.getLeftY(),
-      () -> Xboxcontroller.getRightX(),
+      () -> -Xboxcontroller.getLeftX(),
+      () -> -Xboxcontroller.getRightX(),
       () -> Xboxcontroller.getRightBumper()));
 
       
