@@ -59,7 +59,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    // create auto path settings
+// create auto path settings
     // later move this part into a file of all our possible autos and make this the choosing section
     TrajectoryConfig trajectoryConfig = new TrajectoryConfig(AutoConstants.kMaxSpeedMetersPerSecond, 
         AutoConstants.kMaxAccelerationMetersPerSecondSquared)
