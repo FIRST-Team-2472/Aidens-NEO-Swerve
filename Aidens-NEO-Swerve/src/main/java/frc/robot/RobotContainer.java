@@ -17,10 +17,14 @@ import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.AutoConstants;
@@ -38,6 +42,10 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
+  private final String placementone = "Robot 1", placementtwo = "Robot 2", placementthree = "Robot 3";
+  
+  private String m_autoSelected;
+  private final SendableChooser<String> m_chooser = new SendableChooser<>();
   
   private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
   private final ShuffleboardInfo shuffleboardinfo = new ShuffleboardInfo(swerveSubsystem);
@@ -50,8 +58,16 @@ public class RobotContainer {
       () -> -Xboxcontroller.getRightX(),
       () -> Xboxcontroller.getRightBumper()));
 
-      
+    
     configureBindings();
+
+    m_chooser.addOption(placementone, placementone);
+    m_chooser.addOption(placementtwo, placementtwo);
+    m_chooser.addOption(placementthree, placementthree);
+
+    
+    ShuffleboardTab driverBoard = Shuffleboard.getTab("Driver Board");
+    driverBoard.add("Auto choices", m_chooser).withWidget(BuiltInWidgets.kComboBoxChooser);
   }
 
   private void configureBindings() {
@@ -82,6 +98,10 @@ public class RobotContainer {
       );
       thetaController.enableContinuousInput(-Math.PI, Math.PI);
        
+      m_autoSelected = m_chooser.getSelected();
+
+      if (m_autoSelected == placementone)
+      return new ParallelCommandGroup(null);
       
       SwerveControllerCommand swerveControllerCommand = new SwerveControllerCommand(
         trajectory,
@@ -98,6 +118,14 @@ public class RobotContainer {
           swerveControllerCommand, //starts the movement
           new InstantCommand(() -> swerveSubsystem.stopModules()) // stops the motors when
       );
+
+      if (m_autoSelected == placementtwo)
+      return new ParallelCommandGroup(null);
+
+      if (m_autoSelected == placementthree)
+      return new ParallelCommandGroup(null);
+
+      return null;
   }
   public void logSwerve(){
  
