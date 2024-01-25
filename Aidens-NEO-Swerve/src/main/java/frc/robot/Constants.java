@@ -119,5 +119,6 @@ public final class Constants {
         new TrapezoidProfile.Constraints(
           kMaxSpeedMetersPerSecond, 
         kMaxAccelerationMetersPerSecondSquared);
+    public static double kThetaController;
   }
 }
