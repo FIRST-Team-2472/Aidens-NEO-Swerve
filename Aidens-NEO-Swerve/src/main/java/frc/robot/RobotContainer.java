@@ -75,6 +75,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
+    System.out.println("started");
     // create auto path settings
     // later move this part into a file of all our possible autos and make this the choosing section
     TrajectoryConfig trajectoryConfig = new TrajectoryConfig(AutoConstants.kMaxSpeedMetersPerSecond, 
@@ -101,7 +102,15 @@ public class RobotContainer {
       m_autoSelected = m_chooser.getSelected();
 
       if (m_autoSelected == placementone)
+      return new ParallelCommandGroup(CommandSequences.robot1Command(swerveSubsystem));
+
+      if (m_autoSelected == placementtwo)
       return new ParallelCommandGroup(null);
+
+      if (m_autoSelected == placementthree)
+      return new ParallelCommandGroup(null);
+
+      
       
       SwerveControllerCommand swerveControllerCommand = new SwerveControllerCommand(
         trajectory,
@@ -118,14 +127,6 @@ public class RobotContainer {
           swerveControllerCommand, //starts the movement
           new InstantCommand(() -> swerveSubsystem.stopModules()) // stops the motors when
       );
-
-      if (m_autoSelected == placementtwo)
-      return new ParallelCommandGroup(null);
-
-      if (m_autoSelected == placementthree)
-      return new ParallelCommandGroup(null);
-
-      return null;
   }
   public void logSwerve(){
  
