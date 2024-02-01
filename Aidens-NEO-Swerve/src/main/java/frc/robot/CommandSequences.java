@@ -22,6 +22,7 @@ import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.subsystems.SwerveSubsystem;
 
 public class CommandSequences {
+    
     public static Command robot1Command(SwerveSubsystem swerveSubsystem) {
         swerveSubsystem.resetOdometry(new Pose2d(0,0, new Rotation2d(0)));
 

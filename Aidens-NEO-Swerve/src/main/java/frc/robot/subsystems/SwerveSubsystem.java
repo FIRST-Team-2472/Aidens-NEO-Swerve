@@ -50,7 +50,8 @@ public class SwerveSubsystem extends SubsystemBase{
         DriveConstants.kBackRightDriveAbsoluteEncoderReversed );
 
     private final PigeonIMU gyro = new PigeonIMU(SensorConstants.kPigeonID);
-    private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(DriveConstants.kDriveKinematics, new Rotation2d(0), getModulePositions());
+    private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(DriveConstants.kDriveKinematics,
+            new Rotation2d(0), getModulePositions());
 
     public SwerveSubsystem(){
         new Thread(() -> {

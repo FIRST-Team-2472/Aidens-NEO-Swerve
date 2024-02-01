@@ -75,7 +75,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    System.out.println("started");
+    System.out.println("Autos Begun");
     // create auto path settings
     // later move this part into a file of all our possible autos and make this the choosing section
     TrajectoryConfig trajectoryConfig = new TrajectoryConfig(AutoConstants.kMaxSpeedMetersPerSecond, 
